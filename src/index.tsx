@@ -3,6 +3,9 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ProjectProvider } from "./context/ProjectContext";
+import { initializeIcons } from '@fluentui/font-icons-mdl2';
+
+initializeIcons(/* optional base url */);
 
 ReactDOM.render(
   <React.StrictMode>

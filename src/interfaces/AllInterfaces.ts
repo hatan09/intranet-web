@@ -6,16 +6,16 @@ export interface IDTO<T = number> {
 
 export interface IProjectDTO extends IDTO<number> {
     projectName: string;
-    projectLogo: string | null;
-    projectBackground: string | null;
-    clients: string | null;
-    about: string | null;
-    githubLink: string | null;
-    figmaLink: string | null;
-    microsoftStoreLink: string | null;
-    googlePlayLink: string | null;
-    appStoreLink: string | null;
+    projectLogo: string | undefined;
+    projectBackground?: string | undefined;
+    clients?: string | undefined;
+    about?: string | undefined;
+    githubLink?: string | undefined;
+    figmaLink?: string | undefined;
+    microsoftStoreLink?: string | undefined;
+    googlePlayLink?: string | undefined;
+    appStoreLink?: string | undefined;
     startTime: string;
-    deadline: string | null;
+    deadline?: string | undefined;
     techLead: number;
 }

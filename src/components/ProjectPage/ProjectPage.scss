@@ -1,0 +1,38 @@
+.project-page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.project-page__content{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+  
+.conent__card-list{
+    position: relative;
+    width: 80%;
+    margin: 20px auto;
+    padding: 25px ;
+    /* background: #333; */
+    display: grid;
+    border-style: solid;
+    gap: 50px 100px;
+    justify-content: space-around;
+    grid-template-columns: repeat(auto-fill, 300px);
+}
+
+ul{
+    list-style-type: none;
+}
+
+@media (max-width: 945px) {
+    .conent__card-list{
+        justify-content: space-evenly;
+    }
+}
+
+.conent__card-list--add{
+
+}

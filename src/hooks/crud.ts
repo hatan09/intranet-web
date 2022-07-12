@@ -24,7 +24,7 @@ export function useCRUD<T extends IDTO<number | string>>({ baseUrl, notLoadOnIni
   idPath = idPath || ((item) => item.id);
 
   React.useEffect(() => {
-    !notLoadOnInit && get();
+    get();
   }, []);
 
   async function get() {

@@ -1,50 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
-
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
 }
 
 .App {
-  justify-content: center;
-  text-align: center;
   min-height: 100vh;
 }
 
-/* .card-list{
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  row-gap: 50px;
-  column-gap: 100px;
-  justify-content: space-between;
-  align-items: initial;
-  width: 1200px;
-  margin: 20px;
-  background: #333;
-} */
-
 .App .content{
-  display: flex;
   justify-content: center;
-}
-
-.App .search{
-  display: flex;
-  justify-content: center;
-}
-
-.card-list{
-  position: relative;
-  width: 1200px;
-  margin: 20px;
-  padding: 25px;
-  /* background: #333; */
-  display: grid;
-  border-style: solid;
-  gap: 50px 100px;
-  justify-content: space-evenly;
-  grid-template-columns: repeat(auto-fill, 300px);
 }
