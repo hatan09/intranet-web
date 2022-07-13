@@ -1,36 +1,20 @@
 import React from "react";
-import {
-  TextField,
-  ITextFieldStyles,
-  ITextFieldStyleProps,
-} from "@fluentui/react/lib/TextField";
 import "./App.css";
-import { IProjectDTO } from "./interfaces/AllInterfaces";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 import ProjectPage from "./components/ProjectPage";
-
-const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-
-const textFieldStyles: Partial<ITextFieldStyles> = {
-  fieldGroup: { width: 500 },
-};
-
-function getStyles(props: ITextFieldStyleProps): Partial<ITextFieldStyles> {
-  const { required } = props;
-  return {
-    fieldGroup: [{ width: 500 }],
-    field: {
-      fontWeight: 600,
-      fontSize: 20,
-    },
-  };
-}
+import ProjectDetail from "./components/ProjectDetail";
 
 function App() {
-
   return (
-    <div className="App">
-      <ProjectPage/>
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/projects" element={<ProjectPage />} />
+          <Route path="/view-project" element={<ProjectDetail />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
