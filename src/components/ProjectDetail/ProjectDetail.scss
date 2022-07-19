@@ -30,3 +30,28 @@
     background-color: rgb(51,51,51);
     height: 200vh;
 }
+
+.title{
+    height: 250px;
+    position: absolute;
+    top: -125px;
+    display: flex;
+    align-items: center;
+}
+
+.title__logo{
+    aspect-ratio: 1/1;
+    flex: 1;
+    height: 250px;
+    object-fit: scale-down;
+}
+
+.title__info{
+    
+}
+
+.title__info__tags{
+    display: flex;
+}
+
+

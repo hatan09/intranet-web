@@ -7,7 +7,6 @@ import {
   Dialog,
   DialogFooter,
   DialogContent,
-  DialogType,
   DatePicker,
 } from "@fluentui/react";
 import { Formik, FormikHelpers } from "formik";
@@ -47,32 +46,6 @@ const CreateUpdateProjectForm = ({
       } else alert("An error has occurred");
     }
   };
-
-//   const onParseDateFromString = React.useCallback(
-//     (newValue: string): Date => {
-//       const previousValue = new Date();
-//       const newValueParts = (newValue || "").trim().split("/");
-//       const day =
-//         newValueParts.length > 0
-//           ? Math.max(1, Math.min(31, parseInt(newValueParts[0], 10)))
-//           : previousValue.getDate();
-//       const month =
-//         newValueParts.length > 1
-//           ? Math.max(1, Math.min(12, parseInt(newValueParts[1], 10))) - 1
-//           : previousValue.getMonth();
-//       let year =
-//         newValueParts.length > 2
-//           ? parseInt(newValueParts[2], 10)
-//           : previousValue.getFullYear();
-//       if (year < 100) {
-//         year +=
-//           previousValue.getFullYear() - (previousValue.getFullYear() % 100);
-//       }
-//       return new Date(year, month, day);
-//     },
-//     [new Date()]
-//   );
-
   return (
     <Formik
       initialValues={initialValue}

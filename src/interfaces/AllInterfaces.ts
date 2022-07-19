@@ -19,3 +19,14 @@ export interface IProjectDTO extends IDTO<number> {
     deadline?: string | undefined;
     techLead: number;
 }
+
+export interface UserDTO extends IDTO<string>{
+    userName: string;
+    password: string;
+    firstName: string;
+    lastName: string;
+    email: string;
+    phoneNumber: string;
+    requestServiceId: number;
+    roles: string[];
+}
