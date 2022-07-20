@@ -30,3 +30,8 @@ export interface IUserDTO extends IDTO<string>{
     requestServiceId: number;
     roles: string[];
 }
+
+export interface ILoginModel {
+    userName: string;
+    password: string;
+}

@@ -1,4 +1,4 @@
-.registerPage{
+.loginPage{
     line-height: 1.6em;
     height: 100vh;
     width: 100%;
@@ -9,30 +9,30 @@
     align-items: center;
 }
 
-.registerPage__panel{
+.loginPage__panel{
     position: relative;
-    width: 800px;
+    width: 600px;
     height: fit-content;
     border: 1px solid #dadce0;
     padding: 12px;
     border-radius: 5px;
 }
 
-.registerPage__panel__title{
+.loginPage__panel__title{
     margin-bottom: 20px;
 }
 
-.registerPage__panel__register{
+.loginPage__panel__login{
     display: flex;
     flex-wrap: wrap;
 }
 
-.registerPage__panel__register__form{
+.loginPage__panel__login__form{
     flex: 1;
     margin-right: 10px;
 }
 
-.registerPage__panel__register__logo{
+.loginPage__panel__login__logo{
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -40,16 +40,22 @@
     justify-content: center;
 }
 
-.registerPage__panel__register__logo img{
-    width: 300px;
+.loginPage__panel__login__logo img{
+    width: 200px;
     object-fit: contain;
 }
 
-.registerPage button{
-    margin: 12px 12px 0px 0px;
+.loginPage button{
+    margin-top: 20px;
+    width: 100%;
 }
 
-.registerPage__panel__footer{
+.loginPage a{
+    margin-top: 10px;
+    width: 100%;
+}
+
+.loginPage__panel__footer{
     width: 100%;
     position: absolute;
     left: 0px;
@@ -59,15 +65,15 @@
 }
 
 @media (max-width: 850px) {
-    .registerPage__panel__register{
+    .loginPage__panel__login{
         flex-direction: column-reverse;
     }
 
-    .registerPage__panel{
+    .loginPage__panel{
         width: 650px;
     }
 
-    .registerPage__panel__title{
+    .loginPage__panel__title{
         text-align: center;
     }
 }

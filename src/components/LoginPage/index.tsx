@@ -16,7 +16,7 @@ import {
 import { Formik, FormikHelpers } from "formik";
 import * as yup from "yup";
 import { useUser } from "../../context/UserContext";
-import "./RegisterPage.scss";
+import "./LoginPage.scss";
 
 const options: IDropdownOption[] = [
   { key: "vn", text: "Vietnamese" },
@@ -39,7 +39,7 @@ const initialValues: IUserDTO = {
   roles: ["user"],
 };
 
-function RegisterPage() {
+function LoginPage() {
   const { create } = useUser();
 
   const onSubmit = async (
@@ -65,13 +65,13 @@ function RegisterPage() {
   const theme = getTheme();
   
   return (
-    <div className="registerPage">
-      <div className="registerPage__panel" style={{boxShadow: theme.effects.elevation8}}>
-        <div className="registerPage__panel__title">
-          <Text variant="xxLarge"> Create your ToTechs Account</Text>
+    <div className="loginPage">
+      <div className="loginPage__panel" style={{boxShadow: theme.effects.elevation8}}>
+        <div className="loginPage__panel__title">
+          <Text variant="xxLarge"> Login with your ToTechs Account</Text>
         </div>
-        <div className="registerPage__panel__register">
-          <div className="registerPage__panel__register__form">
+        <div className="loginPage__panel__login">
+          <div className="loginPage__panel__login__form">
             <Formik
               initialValues={initialValues}
               onSubmit={onSubmit}
@@ -105,64 +105,26 @@ function RegisterPage() {
                     onChange={(_e, val) => setFieldValue("password", val)}
                     disabled={isSubmitting}
                   />
-                  <TextField
-                    label="Firstname"
-                    value={values.firstName}
-                    required={true}
-                    errorMessage={errors.firstName}
-                    onChange={(_e, val) => setFieldValue("firstName", val)}
-                    disabled={isSubmitting}
-                  />
-                  <TextField
-                    label="Lastname"
-                    value={values.lastName}
-                    required={true}
-                    errorMessage={errors.lastName}
-                    onChange={(_e, val) => setFieldValue("lastName", val)}
-                    disabled={isSubmitting}
-                  />
-                  <TextField
-                    label="Email"
-                    value={values.email}
-                    inputMode="email"
-                    required={true}
-                    errorMessage={errors.email}
-                    onChange={(_e, val) => setFieldValue("email", val)}
-                    disabled={isSubmitting}
-                  />
-                  <TextField
-                    label="Phone Number"
-                    value={values.phoneNumber}
-                    inputMode="decimal"
-                    required={true}
-                    errorMessage={errors.phoneNumber}
-                    onChange={(_e, val) => setFieldValue("phoneNumber", val)}
-                    disabled={isSubmitting}
-                  />
                   <PrimaryButton
                     type="submit"
-                    text="Sign up"
+                    text="Login"
                   />
-                  <DefaultButton onClick={() => resetForm()} text="Reset" />
+                  <DefaultButton
+                    text="Sign up"
+                    href="register"
+                  />
                 </form>
               )}
             </Formik>
           </div>
-          <div className="registerPage__panel__register__logo">
+          <div className="loginPage__panel__login__logo">
             <img src={Img} alt="none" />
-            <Text variant="xxLarge" block>
-              ToTechs Corp.
-            </Text>
-            <Text variant="large" block>
-              One account. All services.
-            </Text>
           </div>
         </div>
-        <div className="registerPage__panel__footer">
+        <div className="loginPage__panel__footer">
           <div className="">
-            <Text>Have an account? </Text>
-            <a href="login">
-              <Text>Sign in</Text>
+            <a href="register">
+              <Text>Forgot your account?</Text>
             </a>
           </div>
           <div className="">
@@ -181,4 +143,4 @@ function RegisterPage() {
 const validationSchema = yup.object({
 });
 
-export default RegisterPage;
+export default LoginPage;
