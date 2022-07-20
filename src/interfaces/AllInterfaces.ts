@@ -35,3 +35,11 @@ export interface ILoginModel {
     userName: string;
     password: string;
 }
+
+export interface IToken extends IDTO<string> {
+    requestAt: string;
+    expiresIn: string;
+    accessToken : string;
+    refresh_token : string;
+    userInfo  : IUserDTO;
+}

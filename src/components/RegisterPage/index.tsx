@@ -40,7 +40,7 @@ const initialValues: IUserDTO = {
 };
 
 function RegisterPage() {
-  const { create } = useUser();
+  const { register } = useUser();
 
   const onSubmit = async (
     value: IUserDTO,
@@ -52,7 +52,7 @@ function RegisterPage() {
     };
 
     try {
-      // await create(requestBody);
+      await register(requestBody);
       console.log(requestBody);
       
     } catch (e: any) {

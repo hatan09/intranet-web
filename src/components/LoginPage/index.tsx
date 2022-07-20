@@ -1,6 +1,6 @@
 import * as React from "react";
 import Img from "../../assets/imgs/Project.png";
-import { IUserDTO } from "../../interfaces/AllInterfaces";
+import { ILoginModel } from "../../interfaces/AllInterfaces";
 import {
   Text,
   TextField,
@@ -27,32 +27,24 @@ const dropdownStyles: Partial<IDropdownStyles> = {
   dropdown: { width: 200 },
 };
 
-const initialValues: IUserDTO = {
-  id: "",
+const initialValues: ILoginModel = {
   userName: "",
   password: "",
-  firstName: "",
-  lastName: "",
-  email: "",
-  phoneNumber: "",
-  requestServiceId: 1,
-  roles: ["user"],
 };
 
 function LoginPage() {
-  const { create } = useUser();
+  const { login } = useUser();
 
   const onSubmit = async (
-    value: IUserDTO,
-    helper: FormikHelpers<IUserDTO>
+    value: ILoginModel,
+    helper: FormikHelpers<ILoginModel>
   ) => {
     const requestBody = {
-      ...initialValues,
       ...value,
     };
 
     try {
-      // await create(requestBody);
+      await login(requestBody);
       console.log(requestBody);
       
     } catch (e: any) {
