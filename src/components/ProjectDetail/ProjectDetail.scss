@@ -1,8 +1,8 @@
-.project-page{
+.projectTail{
 
 }
 
-.project-page__banner-img{
+.projectDetail__banner-img{
     position: fixed;
     left: 0;
     top: 0;
@@ -11,12 +11,12 @@
     z-index: -1;
 }
 
-.project-page__banner-img img{
+.projectDetail__banner-img img{
     width: 100%;
     object-fit: contain;
 }
 
-.project-page__overlay{
+.projectDetail__overlay{
     width: auto;
     aspect-ratio: 2/1;
     background-image: linear-gradient(to bottom, 
@@ -26,7 +26,7 @@
         rgba(51,51,51,1));
 }
 
-.project-page__content{
+.projectDetail__content{
     background-color: rgb(51,51,51);
     height: 200vh;
 }

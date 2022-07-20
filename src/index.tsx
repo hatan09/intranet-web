@@ -3,14 +3,17 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ProjectProvider } from "./context/ProjectContext";
-import { initializeIcons } from '@fluentui/font-icons-mdl2';
+import { initializeIcons } from "@fluentui/font-icons-mdl2";
+import { UserProvider } from "./context/UserContext";
 
 initializeIcons(/* optional base url */);
 
 ReactDOM.render(
   <React.StrictMode>
     <ProjectProvider>
-      <App />
+      <UserProvider>
+        <App />
+      </UserProvider>
     </ProjectProvider>
   </React.StrictMode>,
   document.getElementById("root")

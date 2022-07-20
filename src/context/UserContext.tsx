@@ -1,19 +1,19 @@
-import { IProjectDTO } from "../interfaces/AllInterfaces";
+import { IUserDTO } from "../interfaces/AllInterfaces";
 import { useCRUD } from "../hooks/crud";
 import { createContext, useContext } from "react";
 
 //irepo
-interface IProjectContextModel {
-  items: IProjectDTO[];
+interface IUserContextModel {
+  items: IUserDTO[];
   get: () => Promise<void>;
-  getDetails: (id: number | string) => Promise<IProjectDTO | null>;
-  create: (item: IProjectDTO) => Promise<IProjectDTO>;
-  update: (item: IProjectDTO) => Promise<void>;
-  remove: (item: IProjectDTO) => Promise<void>;
+  getDetails: (id: number | string) => Promise<IUserDTO | null>;
+  create: (item: IUserDTO) => Promise<IUserDTO>;
+  update: (item: IUserDTO) => Promise<void>;
+  remove: (item: IUserDTO) => Promise<void>;
 }
 
 //repo
-const defaultProjectContextValue: IProjectContextModel = {
+const defaultUserContextValue: IUserContextModel = {
   items: [],
   get: async () => {},
   create: async (e) => e,
@@ -23,25 +23,25 @@ const defaultProjectContextValue: IProjectContextModel = {
 };
 
 //context
-export const ProjectContext = createContext(defaultProjectContextValue);
+export const UserContext = createContext(defaultUserContextValue);
 
 //
-export function ProjectProvider({ children }: any) {
-  const baseProjectUrl = () =>
-    "https://intranetapi.azurewebsites.net/api/project";
+export function UserProvider({ children }: any) {
+  const baseUserUrl = () =>
+    "http://totechsidentity.azurewebsites.net/";
   const { items, get, getDetails, create, update, remove } =
-    useCRUD<IProjectDTO>({
-      baseUrl: () => baseProjectUrl(),
-      notLoadOnInit: false,
+    useCRUD<IUserDTO>({
+      baseUrl: () => baseUserUrl(),
+      notLoadOnInit: true,
     });
 
   return (
-    <ProjectContext.Provider
+    <UserContext.Provider
       value={{ items, get, getDetails, create, update, remove }}
     >
       {children}
-    </ProjectContext.Provider>
+    </UserContext.Provider>
   );
 }
 
-export const useProject = () => useContext(ProjectContext);
+export const useUser = () => useContext(UserContext);

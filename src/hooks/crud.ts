@@ -24,7 +24,7 @@ export function useCRUD<T extends IDTO<number | string>>({ baseUrl, notLoadOnIni
   idPath = idPath || ((item) => item.id);
 
   React.useEffect(() => {
-    get();
+    !notLoadOnInit && get();
   }, []);
 
   async function get() {
@@ -38,7 +38,12 @@ export function useCRUD<T extends IDTO<number | string>>({ baseUrl, notLoadOnIni
   }
 
   async function create(item: T) {
-    const response = await Axios.post<T>(baseUrl(), item);
+    const response = await Axios.post<T>(`${baseUrl()}/Create`, item, 
+    {
+      headers: { 
+          'Content-Type' : 'application/json' 
+      }
+  });
     await get();
     return response?.data;
   }

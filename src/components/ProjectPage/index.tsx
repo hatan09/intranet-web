@@ -1,20 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useProject } from "../../context/ProjectContext";
-import { SubmitHandler, useForm } from "react-hook-form";
 import {
   TextField,
   ITextFieldStyles,
   ITextFieldStyleProps,
 } from "@fluentui/react/lib/TextField";
-import { Text } from "@fluentui/react/lib/Text";
-import { Dialog, DialogFooter } from "@fluentui/react/lib/Dialog";
-import { DefaultButton, PrimaryButton } from "@fluentui/react/lib/Button";
 import "./ProjectPage.scss";
 import { IProjectDTO } from "../../interfaces/AllInterfaces";
 import Card from "../Card/Card";
 import { useBoolean } from "@fluentui/react-hooks";
 import CreateUpdateProjectForm from "./ProjectForms/CreateUpdateProjectForm";
-// import { ControlledTextField } from "../ControlledTextField";
 
 const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
@@ -70,7 +65,7 @@ const ProjectPage: React.FC<ProjectPageProps> = () => {
 
   const handleCreate = async (data: IProjectDTO) => {
     console.log(data);
-    // await create(data);
+    await create(data);
     toggleHideDialog();
   };
 

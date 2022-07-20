@@ -20,7 +20,7 @@ export interface IProjectDTO extends IDTO<number> {
     techLead: number;
 }
 
-export interface UserDTO extends IDTO<string>{
+export interface IUserDTO extends IDTO<string>{
     userName: string;
     password: string;
     firstName: string;

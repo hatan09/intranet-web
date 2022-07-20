@@ -1,0 +1,73 @@
+.registerPage{
+    line-height: 1.6em;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.panel{
+    position: relative;
+    width: 800px;
+    height: fit-content;
+    border: 1px solid #dadce0;
+    padding: 12px;
+    border-radius: 5px;
+}
+
+.panel__title{
+    margin-bottom: 20px;
+}
+
+.panel__register{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.panel__register__form{
+    flex: 1;
+    margin-right: 10px;
+}
+
+.panel__register__logo{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.panel__register__logo img{
+    width: 300px;
+    object-fit: contain;
+}
+
+button{
+    margin: 12px 12px 0px 0px;
+}
+
+.panel__footer{
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    bottom: -40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (max-width: 850px) {
+    .panel__register{
+        flex-direction: column-reverse;
+    }
+
+    .panel{
+        width: 650px;
+    }
+
+    .panel__title{
+        text-align: center;
+    }
+}

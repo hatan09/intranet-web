@@ -164,6 +164,7 @@ const CreateUpdateProjectForm = ({
               />
               <DatePicker
                 label="Starting Date"
+                isRequired
                 placeholder="Select starting date..."
                 onSelectDate={(val) =>
                   setFieldValue("startTime", val?.toISOString())
