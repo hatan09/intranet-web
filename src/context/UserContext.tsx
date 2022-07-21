@@ -38,12 +38,12 @@ export function UserProvider({ children }: any) {
       notLoadOnInit: true,
     });
   const login = async (item: ILoginModel) => {
-    const response = await Axios.post<IToken>("http://totechsidentity.azurewebsites.net/login", item);
+    const response = await Axios.post<IToken>("https://totechsidentity.azurewebsites.net/login", item);
     return response?.data;
   }
 
   const register = async (item: IUserDTO) => {
-    const response = await Axios.post<IUserDTO>("http://totechsidentity.azurewebsites.net/register", item,
+    const response = await Axios.post<IUserDTO>("https://totechsidentity.azurewebsites.net/register", item,
     {
       headers: { 
         'Content-Type' : 'application/json' 
