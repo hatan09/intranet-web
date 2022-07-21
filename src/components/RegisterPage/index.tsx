@@ -36,7 +36,7 @@ const initialValues: IUserDTO = {
   email: "",
   phoneNumber: "",
   requestServiceId: 1,
-  roles: ["user"],
+  roles: ["645b2d62-e2c5-4d7a-bb34-b70c468ac46b"],
 };
 
 function RegisterPage() {
@@ -52,8 +52,10 @@ function RegisterPage() {
     };
 
     try {
-      await register(requestBody);
+      const response = await register(requestBody);
       console.log(requestBody);
+      console.log(response);
+      
       
     } catch (e: any) {
       const response = e.response;

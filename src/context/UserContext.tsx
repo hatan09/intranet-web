@@ -17,7 +17,7 @@ interface IUserContextModel {
 //repo
 const defaultUserContextValue: IUserContextModel = {
   items: [],
-  login: async () =>  null,
+  login: async () => null,
   register: async () => null,
   get: async () => {},
   update: async () => {},
@@ -30,28 +30,32 @@ export const UserContext = createContext(defaultUserContextValue);
 
 //
 export function UserProvider({ children }: any) {
-  const baseUserUrl = () =>
-    "http://totechsidentity.azurewebsites.net";
-  const { items, get, getDetails, update, remove } =
-    useCRUD<IUserDTO>({
-      baseUrl: () => baseUserUrl(),
-      notLoadOnInit: true,
-    });
+  const baseUserUrl = () => "http://totechsidentity.azurewebsites.net";
+  const { items, get, getDetails, update, remove } = useCRUD<IUserDTO>({
+    baseUrl: () => baseUserUrl(),
+    notLoadOnInit: true,
+  });
   const login = async (item: ILoginModel) => {
-    const response = await Axios.post<IToken>("https://totechsidentity.azurewebsites.net/api/Access/login", item);
+    const response = await Axios.post<IToken>(
+      "https://totechsidentity.azurewebsites.net/api/Access/login",
+      item
+    );
     return response?.data;
-  }
+  };
 
   const register = async (item: IUserDTO) => {
-    const response = await Axios.post<IUserDTO>("https://totechsidentity.azurewebsites.net/api/Access/register", item,
-    {
-      headers: { 
-        'Content-Type' : 'application/json' 
-    }
-    });
-    await get();
+    const response = await Axios.post<IUserDTO>(
+      "https://totechsidentity.azurewebsites.net/api/Access/register",
+      item,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    // await getDetails(response?.data.id);
     return response?.data;
-  }
+  };
 
   return (
     <UserContext.Provider

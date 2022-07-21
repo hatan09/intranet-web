@@ -44,8 +44,10 @@ function LoginPage() {
     };
 
     try {
-      await login(requestBody);
+      const respone = await login(requestBody);
       console.log(requestBody);
+      console.log(respone);
+      
       
     } catch (e: any) {
       const response = e.response;
