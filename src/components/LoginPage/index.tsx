@@ -44,11 +44,9 @@ function LoginPage() {
     };
 
     try {
-      const respone = await login(requestBody);
+      const response = await login(requestBody);
       console.log(requestBody);
-      console.log(respone);
-      
-      
+      response && console.log(response);
     } catch (e: any) {
       const response = e.response;
       if (response?.status === 400) {
@@ -57,10 +55,13 @@ function LoginPage() {
     }
   };
   const theme = getTheme();
-  
+
   return (
     <div className="loginPage">
-      <div className="loginPage__panel" style={{boxShadow: theme.effects.elevation8}}>
+      <div
+        className="loginPage__panel"
+        style={{ boxShadow: theme.effects.elevation8 }}
+      >
         <div className="loginPage__panel__title">
           <Text variant="xxLarge"> Login with your ToTechs Account</Text>
         </div>
@@ -102,11 +103,9 @@ function LoginPage() {
                   <PrimaryButton
                     type="submit"
                     text="Login"
+                    disabled={isSubmitting}
                   />
-                  <DefaultButton
-                    text="Sign up"
-                    href="register"
-                  />
+                  <DefaultButton text="Sign up" href="register" />
                 </form>
               )}
             </Formik>
@@ -134,7 +133,6 @@ function LoginPage() {
   );
 }
 
-const validationSchema = yup.object({
-});
+const validationSchema = yup.object({});
 
 export default LoginPage;

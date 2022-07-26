@@ -40,7 +40,8 @@ export function UserProvider({ children }: any) {
       "https://totechsidentity.azurewebsites.net/api/Access/login",
       item
     );
-    return response?.data;
+    if (response?.status == 200) return response?.data;
+    else return null;
   };
 
   const register = async (item: IUserDTO) => {

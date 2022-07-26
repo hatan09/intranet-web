@@ -41,5 +41,5 @@ export interface IToken extends IDTO<string> {
     expiresIn: string;
     accessToken : string;
     refresh_token : string;
-    userInfo  : IUserDTO;
+    userInfo  : IUserDTO | undefined;
 }

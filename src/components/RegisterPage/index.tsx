@@ -42,10 +42,7 @@ const initialValues: IUserDTO = {
 function RegisterPage() {
   const { register } = useUser();
 
-  const onSubmit = async (
-    value: IUserDTO,
-    helper: FormikHelpers<IUserDTO>
-  ) => {
+  const onSubmit = async (value: IUserDTO, helper: FormikHelpers<IUserDTO>) => {
     const requestBody = {
       ...initialValues,
       ...value,
@@ -55,8 +52,6 @@ function RegisterPage() {
       const response = await register(requestBody);
       console.log(requestBody);
       console.log(response);
-      
-      
     } catch (e: any) {
       const response = e.response;
       if (response?.status === 400) {
@@ -65,10 +60,13 @@ function RegisterPage() {
     }
   };
   const theme = getTheme();
-  
+
   return (
     <div className="registerPage">
-      <div className="registerPage__panel" style={{boxShadow: theme.effects.elevation8}}>
+      <div
+        className="registerPage__panel"
+        style={{ boxShadow: theme.effects.elevation8 }}
+      >
         <div className="registerPage__panel__title">
           <Text variant="xxLarge"> Create your ToTechs Account</Text>
         </div>
@@ -144,8 +142,13 @@ function RegisterPage() {
                   <PrimaryButton
                     type="submit"
                     text="Sign up"
+                    disabled={isSubmitting}
                   />
-                  <DefaultButton onClick={() => resetForm()} text="Reset" />
+                  <DefaultButton
+                    onClick={() => resetForm()}
+                    text="Reset"
+                    disabled={isSubmitting}
+                  />
                 </form>
               )}
             </Formik>
@@ -180,7 +183,6 @@ function RegisterPage() {
   );
 }
 
-const validationSchema = yup.object({
-});
+const validationSchema = yup.object({});
 
 export default RegisterPage;

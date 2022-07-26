@@ -80,13 +80,15 @@ export default function Card({ projectInfo }: IProjectCard) {
         {projectInfo.projectName}
       </Text>
       <div className="content">
-        <div className="description">
-          <Text variant="large"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum illum facere nam fuga exercitationem doloribus labore quos atque laudantium tempore veritatis vel </Text>
-        </div>
-        <div className="more">
-          <DefaultButton text="More detail" />
-        </div>
-        
+        <Text variant="large">
+          {" "}
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum illum
+          facere nam fuga exercitationem doloribus labore quos atque laudantium
+          tempore veritatis vel{" "}
+        </Text>
+      </div>
+      <div className="more">
+        <DefaultButton text="More detail" href={`/projects/${projectInfo.id}`}/>
       </div>
     </div>
   );

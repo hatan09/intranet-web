@@ -1,57 +1,142 @@
-.projectTail{
+.projectDetail{
 
 }
 
-.projectDetail__banner-img{
+.bannerImg{
     position: fixed;
     left: 0;
     top: 0;
     width: 100%;
     height: auto;
     z-index: -1;
-}
-
-.projectDetail__banner-img img{
-    width: 100%;
     object-fit: contain;
 }
 
-.projectDetail__overlay{
+.topOverlay{
     width: auto;
     aspect-ratio: 2/1;
-    background-image: linear-gradient(to bottom, 
-        rgba(51,51,51,0), 
-        rgba(51,51,51,0.0), 
-        rgba(51,51,51,0.0),
-        rgba(51,51,51,1));
+    &--gradient{
+        background-image: linear-gradient(to bottom, 
+        rgba(32,32,32,0), 
+        rgba(32,32,32,0.0), 
+        rgba(32,32,32,0.0),
+        rgba(32,32,32,1));
+    }
 }
 
-.projectDetail__content{
-    background-color: rgb(51,51,51);
+.projectContent{
+    padding: 12px 150px;
+    position: relative;
+    background-color: rgb(32,32,32);
     height: 200vh;
+    flex-direction: column;
+    align-items: stretch;
 }
 
-.title{
+.projectBasic{
     height: 250px;
     position: absolute;
     top: -125px;
     display: flex;
-    align-items: center;
-}
+    gap: 20px;
 
-.title__logo{
-    aspect-ratio: 1/1;
-    flex: 1;
-    height: 250px;
-    object-fit: scale-down;
-}
-
-.title__info{
+    &__info{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     
+        span{
+            color: #fff;
+        }
+        
+        &Tags{
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+        }
+    
+        &Members{
+            display: flex;
+            gap: 10px;
+            align-items: flex-end;
+            flex-wrap: nowrap;
+            overflow: hidden;
+    
+            &--leader{
+                margin-right: 20px;
+            }
+        }
+    }
+
+    &__logo{
+        aspect-ratio: 1/1;
+        height: 100%;
+        object-fit: contain;
+    }
 }
 
-.title__info__tags{
-    display: flex;
+.section{
+    background-color: #2d2d2d;
+    border-radius: 10px;
+
+    &Title{
+        padding: 10px 20px;
+        span{
+            color: #fff;
+        }
+    }
+
+    hr{
+        border: 1px solid #555;
+    }
 }
 
+.projectGallery{
+    margin-top: 150px;
 
+    &__imgGallery{
+
+        &--horizontal{
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: stretch;
+            overflow-x: scroll;
+            overflow-y: hidden;
+
+            img{
+                height: 300px;
+                object-fit: contain;
+                margin: 30px 10px;
+                border-radius: 10px;
+
+                &:first-child{
+                    margin-left: 20px;
+                }
+
+                &:last-child{
+                    margin-right: 20px;
+                }
+            }
+        }
+    }
+}
+
+.projectDiscription{
+    margin-top: 20px;
+
+    &__content{
+        padding: 10px 20px;
+
+        span{
+            color: #fff;
+        }
+    }
+}
+
+.projectComments{
+    margin-top: 20px;
+}
+
+.projectRequirements{
+    margin-top: 20px;
+}

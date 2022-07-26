@@ -33,7 +33,7 @@ export function useCRUD<T extends IDTO<number | string>>({ baseUrl, notLoadOnIni
   }
 
   async function getDetails(id: number | string) {
-    const response = await Axios.get<T>(`${baseUrl()}/Get/${id}1`);
+    const response = await Axios.get<T>(`${baseUrl()}/Get/${id}`);
     return response?.data;
   }
 
