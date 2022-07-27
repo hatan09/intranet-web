@@ -46,12 +46,14 @@ function LoginPage() {
     try {
       const response = await login(requestBody);
       console.log(requestBody);
-      response && console.log(response);
+      console.log(`try: ${response}`);
     } catch (e: any) {
       const response = e.response;
-      if (response?.status === 400) {
-        helper.setErrors(response.data.errors);
-      } else alert("An error has occurred");
+      console.log(`catch: ${response}`);
+
+      response?.status === 404
+        ? alert("Incorrect user name or password")
+        : alert("An error has occurred");
     }
   };
   const theme = getTheme();
