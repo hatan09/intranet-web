@@ -17,6 +17,7 @@ import { Formik, FormikHelpers } from "formik";
 import * as yup from "yup";
 import { useUser } from "../../context/UserContext";
 import "./RegisterPage.scss";
+import { useNavigate } from "react-router-dom";
 
 const options: IDropdownOption[] = [
   { key: "vn", text: "Vietnamese" },
@@ -41,6 +42,7 @@ const initialValues: IUserDTO = {
 
 function RegisterPage() {
   const { register } = useUser();
+  let navigate = useNavigate();
 
   const onSubmit = async (value: IUserDTO, helper: FormikHelpers<IUserDTO>) => {
     const requestBody = {
@@ -50,13 +52,20 @@ function RegisterPage() {
 
     try {
       const response = await register(requestBody);
-      console.log(requestBody);
-      console.log(response);
+
+      if(response === null) alert("Cannot load data");
+      else{
+        navigate("/projects");
+      }
     } catch (e: any) {
       const response = e.response;
       if (response?.status === 400) {
-        helper.setErrors(response.data.errors);
-      } else alert("An error has occurred");
+        alert(`Errors occur: ${response.message}`);
+      } 
+      else if(response?.status === 404) {
+        alert(`Not found: ${response.message}`);
+      }
+      else alert("An error has occurred");
     }
   };
   const theme = getTheme();

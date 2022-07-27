@@ -2,27 +2,26 @@ import { IUserDTO, ILoginModel, IToken } from "../interfaces/AllInterfaces";
 import { useCRUD } from "../hooks/crud";
 import { createContext, useContext } from "react";
 import Axios from "axios";
+import React from "react";
 
 //irepo
 interface IUserContextModel {
-  items: IUserDTO[];
+  user: IUserDTO | undefined;
   login: (item: ILoginModel) => Promise<IToken | null>;
-  register: (item: IUserDTO) => Promise<IUserDTO | null>;
-  get: () => Promise<void>;
   getDetails: (id: number | string) => Promise<IUserDTO | null>;
+  register: (item: IUserDTO) => Promise<IUserDTO | null>;
   update: (item: IUserDTO) => Promise<void>;
   remove: (item: IUserDTO) => Promise<void>;
 }
 
 //repo
 const defaultUserContextValue: IUserContextModel = {
-  items: [],
+  user: undefined,
   login: async () => null,
+  getDetails: async (_) => null,
   register: async () => null,
-  get: async () => {},
   update: async () => {},
   remove: async () => {},
-  getDetails: async (_) => null,
 };
 
 //context
@@ -31,7 +30,8 @@ export const UserContext = createContext(defaultUserContextValue);
 //
 export function UserProvider({ children }: any) {
   const baseUserUrl = () => "http://totechsidentity.azurewebsites.net";
-  const { items, get, getDetails, update, remove } = useCRUD<IUserDTO>({
+  const [user, setUser] = React.useState<IUserDTO>();
+  const { getDetails, update, remove } = useCRUD<IUserDTO>({
     baseUrl: () => baseUserUrl(),
     notLoadOnInit: true,
   });
@@ -40,8 +40,11 @@ export function UserProvider({ children }: any) {
       "https://totechsidentity.azurewebsites.net/api/Access/login",
       item
     );
-    if (response?.status == 200) return response?.data;
-    else return null;
+
+    console.log(response?.data);
+    if (response.status === 200)
+      setUser(response.data.userInfo && response.data.userInfo);
+    return response?.data;
   };
 
   const register = async (item: IUserDTO) => {
@@ -54,13 +57,16 @@ export function UserProvider({ children }: any) {
         },
       }
     );
-    // await getDetails(response?.data.id);
+    console.log(response?.data);
+
+    if (response.status === 200)
+      setUser(response.data && response.data);
     return response?.data;
   };
 
   return (
     <UserContext.Provider
-      value={{ items, get, getDetails, update, remove, login, register }}
+      value={{ user, getDetails, update, remove, login, register }}
     >
       {children}
     </UserContext.Provider>

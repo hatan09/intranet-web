@@ -17,6 +17,7 @@ import { Formik, FormikHelpers } from "formik";
 import * as yup from "yup";
 import { useUser } from "../../context/UserContext";
 import "./LoginPage.scss";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const options: IDropdownOption[] = [
   { key: "vn", text: "Vietnamese" },
@@ -34,6 +35,7 @@ const initialValues: ILoginModel = {
 
 function LoginPage() {
   const { login } = useUser();
+  let navigate = useNavigate();
 
   const onSubmit = async (
     value: ILoginModel,
@@ -45,15 +47,18 @@ function LoginPage() {
 
     try {
       const response = await login(requestBody);
-      console.log(requestBody);
-      console.log(`try: ${response}`);
+      console.log(`try: ${response?.id}`);
+
+      if(response === null) alert("Cannot load data");
+      else{
+        navigate("/projects", { replace: true });
+      }
     } catch (e: any) {
       const response = e.response;
-      console.log(`catch: ${response}`);
 
-      response?.status === 404
+      response?.status === 400
         ? alert("Incorrect user name or password")
-        : alert("An error has occurred");
+        : alert(`Errors occur: ${response.message? response.message: "some errors"}`);
     }
   };
   const theme = getTheme();
