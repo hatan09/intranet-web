@@ -54,7 +54,6 @@ export default function Card({ projectInfo }: IProjectCard) {
       className="card"
       style={{
         boxShadow: theme.effects.elevation8,
-        justifyContent: "center",
       }}
     >
       <IconButton

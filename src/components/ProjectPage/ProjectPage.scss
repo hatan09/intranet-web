@@ -1,10 +1,14 @@
-.project-page{
+.projectPage{
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    &__title{
+        margin-bottom: 20px;
+    }
 }
 
-.project-page__content{
+.projectPage__content{
     display: flex;
     justify-content: center;
     width: 100%;
@@ -12,12 +16,11 @@
   
 .conent__card-list{
     position: relative;
-    width: 80%;
+    width: 70%;
     margin: 20px auto;
     padding: 25px ;
     /* background: #333; */
     display: grid;
-    border-style: solid;
     gap: 50px 100px;
     justify-content: space-around;
     grid-template-columns: repeat(auto-fill, 300px);

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useProject } from "../../context/ProjectContext";
+import { getTheme, mergeStyles, Text } from "@fluentui/react";
+import { FontIcon } from "@fluentui/react/lib/Icon";
 import {
   TextField,
   ITextFieldStyles,
@@ -56,6 +58,15 @@ const ProjectPage: React.FC<ProjectPageProps> = () => {
   const [projectList, setProjectList] = useState<IProjectDTO[]>([]);
   const [hideDialog, { toggle: toggleHideDialog }] = useBoolean(true);
 
+  const theme = getTheme();
+
+  const iconClass = mergeStyles({
+    fontSize: 50,
+    height: 50,
+    width: 50,
+    margin: "0 25px",
+  });
+
   async function initProjectList() {
     setProjectList([projectInfo, ...allProjects]);
   }
@@ -75,27 +86,45 @@ const ProjectPage: React.FC<ProjectPageProps> = () => {
   };
 
   return (
-    <div className="project-page">
-      <div className="title">
-        <h2>Projects</h2>
+    <div className="projectPage">
+      <div className="projectPage__title">
+        <FontIcon aria-label="Compass" iconName="Group" className={iconClass} />
+        <Text variant="mega">PROJECTS</Text>
       </div>
-      <form className="project-page__search">
+      <form className="projectPage__search">
         <TextField
-          placeholder="search"
+          placeholder="Type to find your project"
           styles={getStyles}
           onChange={handleChange}
+          iconProps={{ iconName: "Search" }}
         ></TextField>
       </form>
-      <div className="project-page__content">
+      <div className="projectPage__content">
         <ul className="conent__card-list">
           {projectList.map((project) =>
             project.id === -1 ? (
               <div>
                 <button
                   onClick={toggleHideDialog}
-                  style={{ display: "block", width: "100%", height: '100%', fontSize: '100pt', background: '000' }}
+                  style={{
+                    boxShadow: theme.effects.elevation8,
+                    border: "none",
+                    borderRadius: "6px",
+                    display: "block",
+                    width: "100%",
+                    height: "100%",
+                    fontSize: "100pt",
+                    background: "000",
+                  }}
                 >
-                  +
+                  <Text block>
+                  <FontIcon
+                      aria-label="Create new project"
+                      iconName="CircleAddition"
+                      className={iconClass}
+                    />
+                  </Text>
+                  <Text block variant="xxLarge">Add new project</Text>
                 </button>
                 <CreateUpdateProjectForm
                   initialValue={projectTemplate}
