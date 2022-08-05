@@ -12,6 +12,7 @@ import ProjectDetail from "./components/ProjectDetail";
 import RegisterPage from "./components/RegisterPage";
 import Upload from "./components/RegisterPage/upload";
 import LoginPage from "./components/LoginPage";
+import ProfilePage from "./components/ProfilePage";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to="/login" />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/upload" element={<Upload />} />
           <Route path="/projects" element={<ProjectPage />}/>

@@ -11,7 +11,7 @@
 
 .registerPage__panel{
     position: relative;
-    width: 800px;
+    width: 1000px;
     height: fit-content;
     border: 1px solid #dadce0;
     padding: 30px;
@@ -58,6 +58,17 @@
     justify-content: space-between;
 }
 
+.form__avatar{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    button{
+        margin: 0;
+    }
+}
+
 @media (max-width: 850px) {
     .registerPage__panel__register{
         flex-direction: column-reverse;
@@ -69,5 +80,9 @@
 
     .registerPage__panel__title{
         text-align: center;
+    }
+
+    .registerPage__panel__register__form{
+        margin: 0;
     }
 }

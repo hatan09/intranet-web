@@ -21,11 +21,38 @@ interface ICRUDModel<T> {
 
 export function useCRUD<T extends IDTO<number | string>>({ baseUrl, notLoadOnInit, idPath }: IUseCRUDProps<T>): ICRUDModel<T> {
   const [items, setItems] = React.useState<T[]>([]);
+
   idPath = idPath || ((item) => item.id);
 
   React.useEffect(() => {
     !notLoadOnInit && get();
   }, []);
+
+  // // Add a request interceptor
+  // Axios.interceptors.request.use(
+  //   config => {
+  //     if (accessToken) {
+  //       config.headers!['Authorization'] = 'Bearer ' + accessToken;
+  //     }
+  //     return config;
+  //   },
+  //   error => {
+  //     Promise.reject(error);
+  //   }
+  // );
+
+  // // Add a request interceptor
+  // Axios.interceptors.response.use(
+  //   config => {
+  //     if (accessToken) {
+  //       config.headers!['Authorization'] = 'Bearer ' + accessToken;
+  //     }
+  //     return config;
+  //   },
+  //   error => {
+  //     Promise.reject(error);
+  //   }
+  // );
 
   async function get() {
     const response = await Axios.get<T[]>(baseUrl() + '/GetAll');

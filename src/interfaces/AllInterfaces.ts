@@ -21,11 +21,13 @@ export interface IProjectDTO extends IDTO<number> {
 }
 
 export interface IUserDTO extends IDTO<string>{
+    guid: string;
     userName: string;
     password: string;
     firstName: string;
     lastName: string;
     email: string;
+    profilePic: string | undefined;
     phoneNumber: string;
     requestServiceId: number;
     roles: string[];

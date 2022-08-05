@@ -17,7 +17,7 @@ import { Formik, FormikHelpers } from "formik";
 import * as yup from "yup";
 import { useUser } from "../../context/UserContext";
 import "./LoginPage.scss";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const options: IDropdownOption[] = [
   { key: "vn", text: "Vietnamese" },

@@ -1,6 +1,5 @@
 import {
   getTheme,
-  IIconProps,
   IContextualMenuProps,
   IconButton,
   DefaultButton,
@@ -12,7 +11,6 @@ import {
   PersonaPresence,
 } from "@fluentui/react/lib/Persona";
 import { Text } from "@fluentui/react/lib/Text";
-import imange from "../../assets/imgs/Project.png";
 
 import { IProjectDTO } from "../../interfaces/AllInterfaces";
 import "./Card.css";
@@ -28,7 +26,7 @@ const menuProps: IContextualMenuProps = {
       key: "delete",
       text: "Delete Project",
       iconProps: { iconName: "Delete" },
-      onClick(ev?, item?) {
+      onClick(event, item) {
         console.log("deleted");
       },
     },
@@ -36,7 +34,7 @@ const menuProps: IContextualMenuProps = {
       key: "star",
       text: "Star",
       iconProps: { iconName: "FavoriteStar" },
-      onClick(ev?, item?) {
+      onClick(event, item) {
         console.log("deleted");
       },
     },

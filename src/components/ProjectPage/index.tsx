@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useProject } from "../../context/ProjectContext";
-import { getTheme, mergeStyles, Text } from "@fluentui/react";
+import {
+  DefaultPalette,
+  getTheme,
+  IStackProps,
+  IStackStyles,
+  IStackTokens,
+  mergeStyles,
+  Stack,
+  Text,
+} from "@fluentui/react";
 import { FontIcon } from "@fluentui/react/lib/Icon";
 import {
   TextField,
@@ -17,6 +26,15 @@ const list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
 const textFieldStyles: Partial<ITextFieldStyles> = {
   fieldGroup: { width: 500 },
+};
+
+const stackWidth = 70;
+
+const stackStyles: IStackStyles = {
+  root: {
+    width: `${stackWidth}%`,
+    overflow: "visible",
+  },
 };
 
 const projectTemplate: IProjectDTO = {
@@ -60,6 +78,13 @@ const ProjectPage: React.FC<ProjectPageProps> = () => {
 
   const theme = getTheme();
 
+  const stackProps: IStackProps = {
+    horizontalAlign: "center",
+    verticalAlign: "center",
+  };
+
+  const wrapStackTokens: IStackTokens = { childrenGap: 30, padding: 20 };
+
   const iconClass = mergeStyles({
     fontSize: 50,
     height: 50,
@@ -100,10 +125,17 @@ const ProjectPage: React.FC<ProjectPageProps> = () => {
         ></TextField>
       </form>
       <div className="projectPage__content">
-        <ul className="conent__card-list">
+        <Stack
+          {...stackProps}
+          horizontal
+          verticalFill
+          wrap
+          styles={stackStyles}
+          tokens={wrapStackTokens}
+        >
           {projectList.map((project) =>
             project.id === -1 ? (
-              <div>
+              <div key={-1}>
                 <button
                   onClick={toggleHideDialog}
                   style={{
@@ -111,20 +143,22 @@ const ProjectPage: React.FC<ProjectPageProps> = () => {
                     border: "none",
                     borderRadius: "6px",
                     display: "block",
-                    width: "100%",
-                    height: "100%",
+                    height: "400px",
+                    width: "300px",
                     fontSize: "100pt",
                     background: "000",
                   }}
                 >
                   <Text block>
-                  <FontIcon
+                    <FontIcon
                       aria-label="Create new project"
                       iconName="CircleAddition"
                       className={iconClass}
                     />
                   </Text>
-                  <Text block variant="xxLarge">Add new project</Text>
+                  <Text block variant="xxLarge">
+                    Add new project
+                  </Text>
                 </button>
                 <CreateUpdateProjectForm
                   initialValue={projectTemplate}
@@ -134,12 +168,12 @@ const ProjectPage: React.FC<ProjectPageProps> = () => {
                 />
               </div>
             ) : (
-              <li key={project.id}>
-                <Card projectInfo={project}></Card>
-              </li>
+              <>
+                <Card projectInfo={project} key={project.id}></Card>
+              </>
             )
           )}
-        </ul>
+        </Stack>
       </div>
     </div>
   );
